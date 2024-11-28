@@ -8,7 +8,6 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
 
 export default function PaginationTable() {
   const searchParams = useSearchParams()
@@ -42,40 +41,38 @@ export default function PaginationTable() {
     .sort((a, b) => a - b)
 
   return (
-    <Suspense>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            {currentSkip > 0 && (
-              <PaginationPrevious
-                className="cursor-pointer"
-                onClick={() => handleClickPage(currentSkip - limit)}
-              />
-            )}
-          </PaginationItem>
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          {currentSkip > 0 && (
+            <PaginationPrevious
+              className="cursor-pointer"
+              onClick={() => handleClickPage(currentSkip - limit)}
+            />
+          )}
+        </PaginationItem>
 
-          {sortedPages.map((page) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                onClick={() => handleClickPage(page * limit)}
-                className="cursor-pointer"
-                isActive={currentPage === page}
-              >
-                {page + 1}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-
-          <PaginationItem>
-            {currentSkip / limit + 1 < totalPages && (
-              <PaginationNext
-                className="cursor-pointer"
-                onClick={() => handleClickPage(currentSkip + limit)}
-              />
-            )}
+        {sortedPages.map((page) => (
+          <PaginationItem key={page}>
+            <PaginationLink
+              onClick={() => handleClickPage(page * limit)}
+              className="cursor-pointer"
+              isActive={currentPage === page}
+            >
+              {page + 1}
+            </PaginationLink>
           </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-    </Suspense>
+        ))}
+
+        <PaginationItem>
+          {currentSkip / limit + 1 < totalPages && (
+            <PaginationNext
+              className="cursor-pointer"
+              onClick={() => handleClickPage(currentSkip + limit)}
+            />
+          )}
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   )
 }

@@ -3,6 +3,7 @@ import AppPathList from '@/components/customize/app-pathlist'
 import SearchInput from '@/components/customize/searchInput'
 import ProductsTable from '@/components/customize/productsTable'
 import { Plus } from 'lucide-react'
+import { Suspense } from 'react'
 
 export default function Inventory({ searchParams }) {
   const paths = [
@@ -15,7 +16,9 @@ export default function Inventory({ searchParams }) {
       <section className="flex items-center justify-between">
         <h1 className="text-4xl font-semibold text-primary">Produtos</h1>
         <section className="flex items-center">
-          <SearchInput />
+          <Suspense>
+            <SearchInput />
+          </Suspense>
           <Button className="ml-4" variant="outline">
             Export
           </Button>
@@ -25,7 +28,9 @@ export default function Inventory({ searchParams }) {
           </Button>
         </section>
       </section>
-      <ProductsTable searchParams={searchParams} />
+      <Suspense>
+        <ProductsTable searchParams={searchParams} />
+      </Suspense>
     </section>
   )
 }
