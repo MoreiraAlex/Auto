@@ -3,6 +3,7 @@ import { TableHead, TableRow } from '@/components/ui/table'
 import { HandleParams } from './handleParams'
 import { useSearchParams } from 'next/navigation'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import { Suspense } from 'react'
 
 export default function Columns() {
   const searchParams = useSearchParams()
@@ -33,53 +34,55 @@ export default function Columns() {
   }
 
   return (
-    <TableRow className=" hover:bg-transparent">
-      <TableHead
-        onClick={() => handleClick('id')}
-        className="w-[50px] hover:bg-muted/50 cursor-pointer"
-      >
-        <div className="flex items-center gap-1">
-          ID
-          {getSortIcon('id')}
-        </div>
-      </TableHead>
-      <TableHead
-        onClick={() => handleClick('title')}
-        className="w-[200px] hover:bg-muted/50 cursor-pointer"
-      >
-        <div className="flex items-center gap-1">
-          Nome
-          {getSortIcon('title')}
-        </div>
-      </TableHead>
-      <TableHead
-        onClick={() => handleClick('category')}
-        className="w-[150px] hover:bg-muted/50 cursor-pointer"
-      >
-        <div className="flex items-center gap-1">
-          Categoria
-          {getSortIcon('category')}
-        </div>
-      </TableHead>
-      <TableHead
-        onClick={() => handleClick('price')}
-        className="w-[100px] hover:bg-muted/50 cursor-pointer"
-      >
-        <div className="flex items-center gap-1">
-          Preço
-          {getSortIcon('price')}
-        </div>
-      </TableHead>
-      <TableHead
-        onClick={() => handleClick('stock')}
-        className="w-[100px] hover:bg-muted/50 cursor-pointer"
-      >
-        <div className="flex items-center gap-1">
-          Estoque
-          {getSortIcon('stock')}
-        </div>
-      </TableHead>
-      <TableHead className="w-[150px] text-right">Ações</TableHead>
-    </TableRow>
+    <Suspense>
+      <TableRow className=" hover:bg-transparent">
+        <TableHead
+          onClick={() => handleClick('id')}
+          className="w-[50px] hover:bg-muted/50 cursor-pointer"
+        >
+          <div className="flex items-center gap-1">
+            ID
+            {getSortIcon('id')}
+          </div>
+        </TableHead>
+        <TableHead
+          onClick={() => handleClick('title')}
+          className="w-[200px] hover:bg-muted/50 cursor-pointer"
+        >
+          <div className="flex items-center gap-1">
+            Nome
+            {getSortIcon('title')}
+          </div>
+        </TableHead>
+        <TableHead
+          onClick={() => handleClick('category')}
+          className="w-[150px] hover:bg-muted/50 cursor-pointer"
+        >
+          <div className="flex items-center gap-1">
+            Categoria
+            {getSortIcon('category')}
+          </div>
+        </TableHead>
+        <TableHead
+          onClick={() => handleClick('price')}
+          className="w-[100px] hover:bg-muted/50 cursor-pointer"
+        >
+          <div className="flex items-center gap-1">
+            Preço
+            {getSortIcon('price')}
+          </div>
+        </TableHead>
+        <TableHead
+          onClick={() => handleClick('stock')}
+          className="w-[100px] hover:bg-muted/50 cursor-pointer"
+        >
+          <div className="flex items-center gap-1">
+            Estoque
+            {getSortIcon('stock')}
+          </div>
+        </TableHead>
+        <TableHead className="w-[150px] text-right">Ações</TableHead>
+      </TableRow>
+    </Suspense>
   )
 }
