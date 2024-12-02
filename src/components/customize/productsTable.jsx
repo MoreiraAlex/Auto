@@ -2,7 +2,6 @@ import { Separator } from '@/components/ui/separator'
 
 import { Table, TableBody, TableCell, TableHeader } from '@/components/ui/table'
 
-// import PaginationTable from './paginationTable'
 import Columns from './colums'
 import PaginationTable from './paginationTable'
 import axios from 'axios'
@@ -33,7 +32,6 @@ export default async function ProductsTable({ searchParams }) {
           <Columns />
         </TableHeader>
         <TableBody>
-          {/* <Products searchParams={searchParams} /> */}
           {data.products.map((product) => (
             <ProductRow key={product.id} id={product.id}>
               <TableCell>{product.id}</TableCell>

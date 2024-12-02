@@ -13,9 +13,6 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { SkeletonTableRow } from '@/components/customize/skeletonTemplate'
-import Columns from '@/components/customize/colums'
-import { Separator } from '@radix-ui/react-dropdown-menu'
-import PaginationTable from '@/components/customize/paginationTable'
 
 export default function Inventory({ searchParams }) {
   const paths = [

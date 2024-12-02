@@ -27,6 +27,7 @@ export default function SearchInput() {
       params.delete('search')
     }
 
+    params.set('skip', 0)
     router.replace(`${pathname}?${params.toString()}`)
   }, 500)
 
