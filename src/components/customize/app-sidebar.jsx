@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
-import { ToggleTheme } from './toggleTheme'
+import ThemeCustomizer from './themeCustomizer'
 
 const items = [
   {
@@ -31,7 +31,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>AutoPC</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -49,7 +49,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <ToggleTheme />
+        <ThemeCustomizer />
       </SidebarFooter>
     </Sidebar>
   )

@@ -9,13 +9,12 @@ import {
 } from '@/components/ui/pagination'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-export default function PaginationTable() {
+export default function PaginationTable({ total }) {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
 
   const params = new URLSearchParams(searchParams?.toString())
-  const total = 194
   const limit = params.get('limit') || 10
   const skip = params.get('skip') || 0
   const totalPages = limit > 0 ? Math.ceil(total / limit) : 1

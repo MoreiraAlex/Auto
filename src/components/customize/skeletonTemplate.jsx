@@ -13,7 +13,7 @@ function SkeletonTable() {
 }
 
 function SkeletonTableRow() {
-  return <Skeleton className="w-full h-10" />
+  return <Skeleton className="w-full h-9" />
 }
 
 export { SkeletonTable, SkeletonTableRow }

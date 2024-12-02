@@ -10,28 +10,23 @@ export default function SearchInput() {
   const pathname = usePathname()
   const router = useRouter()
 
-  // Estado local para gerenciar o valor do campo
   const [search, setSearch] = useState('')
 
-  // Atualiza o estado local com base no parâmetro da URL
   useEffect(() => {
     const params = new URLSearchParams(searchParams?.toString())
     const currentSearch = params.get('search') || ''
     setSearch(currentSearch)
   }, [searchParams])
 
-  // Função para lidar com mudanças no input
   const handleChange = useDebouncedCallback((value) => {
     const params = new URLSearchParams(searchParams?.toString())
 
-    // Atualiza o parâmetro da URL
     if (value) {
       params.set('search', value)
     } else {
       params.delete('search')
     }
 
-    // Atualiza a URL sem recarregar a página
     router.replace(`${pathname}?${params.toString()}`)
   }, 500)
 
